@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 350px;
+    background-color: red;
+    text-align: center;
+    padding: 30px 20px 50px;
+    border-radius: 15 px;
+}
+
+.card figure img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid yellow;
+}
+
+.card button {
+    margin: 0 20px;
+}
+
+.heading {
+    color: darkgrey;
+}
