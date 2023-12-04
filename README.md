@@ -1,2 +1,1 @@
-# React bo'yicha barcha dars kodlari
-## Ushbu sahifadan bo'sh react loyihasini yuklab olishingiz mumkin
+# Mavzu: React Events & React Hooks & useState() & Ma'lumotlarni componentda render qilish & Git & GitHub
