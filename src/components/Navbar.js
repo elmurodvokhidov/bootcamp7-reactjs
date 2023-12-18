@@ -5,18 +5,18 @@ import { TiHome } from "react-icons/ti";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaHeart, FaCartShopping } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function NavbarComponent() {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary position-sticky top-0 z-2" style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,.2)" }}>
             <Container>
-                <Navbar.Brand to="/">
-                    <img style={{ width: '70px' }} src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="..." />
+                <Navbar.Brand>
+                    <Link to={"/"}><img style={{ width: '70px' }} src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="..." /></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className='flex-grow-0'>
-                    <Nav className="me-auto gap-4">
+                    <Nav className="me-auto gap-4" style={{width: "fit-content"}}>
                         <NavLink to="/">Home <TiHome /></NavLink>
                         <NavLink to="product">Product <BsFillBoxFill /></NavLink>
                         <NavLink to="likes">Likes <FaHeart /></NavLink>

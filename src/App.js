@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Product from "./pages/Product";
 import Likes from "./pages/Likes";
 import Basket from "./pages/Basket";
+import CardInfo from "./pages/CardInfo";
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -15,6 +16,7 @@ function App() {
       <Route path="likes" element={<Likes />} />
       <Route path="basket" element={<Basket />} />
       <Route path="profile" element={<Add />} />
+      <Route path=":id" element={<CardInfo />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   ));

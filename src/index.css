@@ -4,13 +4,17 @@
     box-sizing: border-box;
 }
 
+#autoFocus {
+    z-index: -1;
+}
+
 .navbar a {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 20px;
     text-decoration: none;
-    color: #9932CC;
+    color: #8112FA;
     position: relative;
 }
 
@@ -20,7 +24,7 @@ a.active::before {
     bottom: -3px;
     width: 100%;
     height: 1.5px;
-    background: #9932CC;
+    background: #8112FA;
 }
 
 /* .home {
@@ -40,7 +44,7 @@ input::-webkit-inner-spin-button {
 .sliderWrapper .slick-next {
     position: absolute;
     right: -6px;
-    z-index: 15;
+    z-index: 1;
 }
 
 .sliderWrapper .slick-arrow::before {
@@ -49,7 +53,7 @@ input::-webkit-inner-spin-button {
 }
 
 .sliderWrapper .slick-prev {
-    z-index: 10;
+    z-index: 1;
 }
 
 .customCard header {
@@ -79,7 +83,7 @@ input::-webkit-inner-spin-button {
     background: #0000003a;
 }
 
-.cardModal button {
+.cardModal :where(a, button) {
     width: 55px;
     height: 55px;
     color: white;
@@ -92,6 +96,12 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     background: #00000000;
     border: 1px solid white;
+    transition: .2s;
+}
+
+.cardModal :where(a, button):hover {
+    color: #8112FA;
+    border-color: #8112FA;
 }
 
 .customCard header:hover .cardModal {

@@ -2,27 +2,30 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaCartShopping, FaRegHeart } from 'react-icons/fa6';
 import { IoEyeOutline } from "react-icons/io5";
+import calcDis from "calculate-discount-hojiakbar";
+import { Link } from 'react-router-dom';
 
-function CardComponent() {
+function CardComponent({ item }) {
     return (
         <Card className='customCard col' style={{ width: '18rem' }}>
             <header variant="top">
-                <Card.Img src="https://olcha.uz/image/266x266/products/supplier/stores/1/2023-09-13/KVD28D7GUC2bz9XYnFnNNWVXcWYaJJ8YLFUEUagp2Obr0bilgYH38sYcUKH2.jpg" />
+                <Card.Img src={item.img} />
                 <div className="cardModal">
-                    <button><IoEyeOutline /></button>
+                    <Link to={item.id}><IoEyeOutline /></Link>
                     {/* <FaHeart /> */}
                     <button><FaRegHeart /></button>
                 </div>
             </header>
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>{item.title.length > 20 ? item.title.slice(0, 20) + "..." : item.title}</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    {
+                        item.description.length > 80 ? item.description.slice(0, 80) + "..." : item.description
+                    }
                 </Card.Text>
                 <div className="d-flex justify-content-between align-items-center">
-                    <Card.Title>450$ <del>500$</del></Card.Title>
-                    <Button className='mx-3' variant="primary"><FaCartShopping /></Button>
+                    <Card.Title>{calcDis(item.price, item.discount)}$ <del>{item.price}$</del></Card.Title>
+                    <Button className='mx-3' style={{background: "#8112FA"}}><FaCartShopping /></Button>
                 </div>
             </Card.Body>
         </Card>
