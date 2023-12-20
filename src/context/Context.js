@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 // import getUID from "uid-generator-package";
 
 export const ContextData = React.createContext();
@@ -14,6 +15,7 @@ export function ContextFunction({ children }) {
             price: 1300,
             discount: 20,
             status: true,
+            count: 1,
         },
         {
             id: "NDEwNlZORTM5MTM44106VNE39138",
@@ -22,7 +24,8 @@ export function ContextFunction({ children }) {
             description: `Dinamik orolda ogohlantirishlar va jonli harakatlar paydo bo'ladi - shuning uchun siz boshqa biror narsa qilayotganingizda ularni o'tkazib yubormaysiz. Siz keyingi safaringizni kuzatishingiz, kim qo'ng'iroq qilayotganini ko'rishingiz, parvoz holatini tekshirishingiz va hokazo. Innovatsion yangi dizayn materialga rang singdirilgan orqa oynaga ega. Shisha uchun maxsus ikki tomonlama ion almashish jarayoni va aerokosmik alyuminiy korpus iPhone 15 Plus-ni nihoyatda bardoshli qilishga yordam beradi. Ceramic Shield old qismi har qanday smartfon oynasidan qattiqroq. iPhone chayqalish, suv va changga chidamli. Qanday yengillik. Yangi 48 megapikselli asosiy kamera. Hayratlanarli, tabassum bilan suratga olish uchun. Endi asosiy kamera juda yuqori aniqlikda suratga oladi. Shunday qilib, hayratlanarli tafsilotlarga ega ajoyib suratlarni olish har qachongidan ham osonroq - oniy suratlardan tortib ajoyib manzaralargacha. Fokus-pokus, sehrli yangi portretlar. Batafsilroq tafsilot va boy rang portretlaringizda keskin farq qiladi. Va endi siz suratga olganingizdan keyin ham fokusni mavzular o'rtasida o'zgartirish uchun bosing. Presto chango. O'tmasdan oldingi lahzani tezda suratga olishni xohlaysizmi? Endi siz portret rejimiga o'tishingiz shart emas. Agar ob'ektingiz odam, it yoki mushuk bo'lsa, iPhone 15 Plus avtomatik ravishda chuqur ma'lumotlarni yozib oladi. Shunday qilib, siz suratingizni bir zumda portret sifatida, badiiy xiralashtirish effekti bilan ko'rishni tanlashingiz mumkin. Yoki keyinroq Rasmlar ilovasida. A16 Bionic barcha turdagi ilg'or funksiyalarni quvvatlaydi. 24 megapikselli fotosuratlar va keyingi avlod portretlari uchun ishlatiladigan hisoblash fotografiyasi kabi. Telefon qo'ng'iroqlari uchun ovozli izolyatsiya. Grafika intensiv o'yinlar uchun esa silliq ishlash. Hammasi ajoyib batareya quvvati uchun ajoyib samaradorlikka ega. Bu Pro chipi sifatida boshlangani ajablanarli emas.`,
             price: 1100,
             discount: 20,
-            status: true,
+            status: false,
+            count: 1,
         },
         {
             id: "ODMxNXdOcDU2ODcz8315wNp56873",
@@ -32,8 +35,76 @@ export function ContextFunction({ children }) {
             price: 1000,
             discount: 20,
             status: true,
+            count: 1,
         },
     ]);
+
+    // Korzinkadagi barcha mahsulotlar
+    const [basket, setBasket] = useState([]);
+
+    // Korzinkaga mahsulot qo'shish
+    function addToCart(mahsulot) {
+        if (mahsulot.status) {
+            if (basket.filter(element => element.id === mahsulot.id).length === 0) {
+                setBasket([...basket, mahsulot]);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+            else {
+                Swal.fire({
+                    title: "Ogohlantirish!",
+                    text: "Ushbu mahsulot allaqchon mavjud!",
+                    icon: "warning"
+                });
+            }
+        }
+        else {
+            Swal.fire({
+                title: "Ogohlantirish!",
+                text: "Afsuski ushbu mahsulot omborda mavjud emas!",
+                icon: "warning"
+            });
+        }
+    };
+
+    function deleteProductFromCart(id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setBasket(basket.filter(item => item.id !== id));
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    };
+
+    function increment(mahsulot) {
+        setBasket(basket.map(item => item.id === mahsulot.id ? { ...item, count: item.count + 1 } : item));
+    };
+
+    function decrement(mahsulot) {
+        if (mahsulot.count !== 1) {
+            setBasket(basket.map(item => item.id === mahsulot.id ? { ...item, count: item.count - 1 } : item));
+        }
+        else {
+            deleteProductFromCart(mahsulot.id);
+        }
+    };
 
     // Takrorlanmas id
     // const UID = getUID();
@@ -43,6 +114,11 @@ export function ContextFunction({ children }) {
         <ContextData.Provider value={{
             products,
             setProducts,
+            addToCart,
+            basket,
+            deleteProductFromCart,
+            increment,
+            decrement,
         }}>
             {children}
         </ContextData.Provider>

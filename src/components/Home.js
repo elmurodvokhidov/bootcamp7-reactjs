@@ -4,7 +4,9 @@ import SimpleSlider from "./SimpleSlider"
 import { ContextData } from "../context/Context"
 
 function Home() {
-    const { products } = useContext(ContextData);
+    const {
+        products,
+    } = useContext(ContextData);
 
     return (
         <div className="home container py-5">

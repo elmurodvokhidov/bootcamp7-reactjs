@@ -112,3 +112,12 @@ input::-webkit-inner-spin-button {
     filter: blur(8px);
     -webkit-filter: blur(8px);
 }
+
+th {
+    font-size: 20px;
+}
+
+td {
+    vertical-align: middle;
+    font-size: 18px;
+}
