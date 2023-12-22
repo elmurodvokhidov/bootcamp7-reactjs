@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { FaCartShopping, FaRegHeart } from 'react-icons/fa6';
+import { FaCartShopping, FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { IoEyeOutline } from "react-icons/io5";
 import calcDis from "calculate-discount-hojiakbar";
 import { Link } from 'react-router-dom';
@@ -8,7 +8,11 @@ import { useContext } from 'react';
 import { ContextData } from '../context/Context';
 
 function CardComponent({ item }) {
-    const { addToCart } = useContext(ContextData);
+    const {
+        addToCart,
+        handleLike,
+        like,
+    } = useContext(ContextData);
 
     return (
         <Card className='customCard col' style={{ width: '18rem' }}>
@@ -16,8 +20,7 @@ function CardComponent({ item }) {
                 <Card.Img src={item.img} />
                 <div className="cardModal">
                     <Link to={item.id}><IoEyeOutline /></Link>
-                    {/* <FaHeart /> */}
-                    <button><FaRegHeart /></button>
+                    <button style={{ borderColor: (like.filter(element => element.id === item.id).length === 0 ? "white" : "#8112FA") }} onClick={() => handleLike(item)}>{like.filter(element => element.id === item.id).length === 0 ? <FaRegHeart /> : <FaHeart style={{ color: "#8112FA" }} />}</button>
                 </div>
             </header>
             <Card.Body>

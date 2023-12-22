@@ -121,3 +121,18 @@ td {
     vertical-align: middle;
     font-size: 18px;
 }
+
+.showLength {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    font-size: 15px;
+    background: red;
+    color: white;
+}

@@ -13,7 +13,7 @@ function Home() {
             <div className="sliderWrapper pt-3">
                 <SimpleSlider />
             </div>
-            <div className="row row-cols-1 row-cols-md-4 gap-5 justify-content-between pb-4 pt-3">
+            <div className="row row-cols-1 row-cols-md-4 gap-5 justify-content-left pb-4 pt-3">
                 {
                     products.map(item => (
                         <CardComponent item={item} key={item.id} />

@@ -42,6 +42,9 @@ export function ContextFunction({ children }) {
     // Korzinkadagi barcha mahsulotlar
     const [basket, setBasket] = useState([]);
 
+    // Like-dage barcha mahsulotlar
+    const [like, setLike] = useState([]);
+
     // Korzinkaga mahsulot qo'shish
     function addToCart(mahsulot) {
         if (mahsulot.status) {
@@ -72,6 +75,7 @@ export function ContextFunction({ children }) {
         }
     };
 
+    // Korzinkadan mahsulot o'chirish
     function deleteProductFromCart(id) {
         Swal.fire({
             title: "Are you sure?",
@@ -106,6 +110,30 @@ export function ContextFunction({ children }) {
         }
     };
 
+    // Like-ga mahsulot qo'shish
+    function handleLike(item) {
+        if (like.filter(element => element.id === item.id).length === 0) {
+            setLike([...like, item]);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        else {
+            setLike(like.filter(i => i.id !== item.id));
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+
     // Takrorlanmas id
     // const UID = getUID();
     // console.log(UID);
@@ -119,6 +147,8 @@ export function ContextFunction({ children }) {
             deleteProductFromCart,
             increment,
             decrement,
+            like,
+            handleLike,
         }}>
             {children}
         </ContextData.Provider>
