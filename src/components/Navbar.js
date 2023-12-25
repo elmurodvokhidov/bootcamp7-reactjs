@@ -10,10 +10,13 @@ import { useContext } from 'react';
 import { ContextData } from '../context/Context';
 
 function NavbarComponent() {
-    const { basket } = useContext(ContextData);
+    const {
+        basket,
+        like
+    } = useContext(ContextData);
 
     return (
-        <Navbar expand="lg" className="bg-body-tertiary position-sticky top-0 z-3" style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,.2)" }}>
+        <Navbar expand="lg" className="bg-body-tertiary position-sticky top-0" style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,.2)", zIndex: "50" }}>
             <Container>
                 <Navbar.Brand>
                     <Link to={"/"}><img style={{ width: '70px' }} src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="..." /></Link>
@@ -23,7 +26,7 @@ function NavbarComponent() {
                     <Nav className="me-auto gap-4" style={{ width: "fit-content" }}>
                         <NavLink to="/">Home <TiHome /></NavLink>
                         <NavLink to="product">Product <BsFillBoxFill /></NavLink>
-                        <NavLink to="likes">Likes <FaHeart /></NavLink>
+                        <NavLink to="likes">Likes <FaHeart /><span className='showLength likeLength'>{like.length}</span></NavLink>
                         <NavLink to="basket">Basket <FaCartShopping /><span className='showLength'>{basket.length}</span></NavLink>
                         <NavLink to="profile">Profile <FaUserAlt /></NavLink>
                     </Nav>

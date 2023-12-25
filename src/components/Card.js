@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaCartShopping, FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { IoEyeOutline } from "react-icons/io5";
+import { FaBookmark } from "react-icons/fa";
 import calcDis from "calculate-discount-hojiakbar";
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -17,6 +18,7 @@ function CardComponent({ item }) {
     return (
         <Card className='customCard col' style={{ width: '18rem' }}>
             <header variant="top">
+                <div id='discount'><span>{item.discount}%</span><FaBookmark className='discountIcon' /></div>
                 <Card.Img src={item.img} />
                 <div className="cardModal">
                     <Link to={item.id}><IoEyeOutline /></Link>
