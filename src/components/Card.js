@@ -20,7 +20,7 @@ function CardComponent({ item }) {
                 <Card.Img src={item.img} />
                 <div className="cardModal">
                     <Link to={item.id}><IoEyeOutline /></Link>
-                    <button style={{ borderColor: (like.filter(element => element.id === item.id).length === 0 ? "white" : "#8112FA") }} onClick={() => handleLike(item)}>{like.filter(element => element.id === item.id).length === 0 ? <FaRegHeart /> : <FaHeart style={{ color: "#8112FA" }} />}</button>
+                    <button style={{ borderColor: (like.filter(element => element.id === item.id).length === 0 ? "" : "#8112FA") }} onClick={() => handleLike(item)}>{like.filter(element => element.id === item.id).length === 0 ? <FaRegHeart /> : <FaHeart style={{ color: "#8112FA" }} />}</button>
                 </div>
             </header>
             <Card.Body>
