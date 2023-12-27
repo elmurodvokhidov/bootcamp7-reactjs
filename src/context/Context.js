@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-// import getUID from "uid-generator-package";
+import getUID from "uid-generator-package";
 
 export const ContextData = React.createContext();
 
@@ -44,6 +45,24 @@ export function ContextFunction({ children }) {
 
     // Like-dage barcha mahsulotlar
     const [like, setLike] = useState([]);
+
+    // Search state
+    const [search, setSearch] = useState("");
+
+    // Input-lardan olingan barcha ma'lumotlar
+    const [newProduct, setNewProduct] = useState({
+        id: "",
+        title: "",
+        img: "",
+        description: "",
+        price: "",
+        discount: "",
+        status: true,
+        count: 1,
+    });
+
+    // Navigation hook
+    // const navigate = useNavigate();
 
     // Korzinkaga mahsulot qo'shish
     function addToCart(mahsulot) {
@@ -134,9 +153,20 @@ export function ContextFunction({ children }) {
         }
     }
 
-    // Takrorlanmas id
-    // const UID = getUID();
-    // console.log(UID);
+    // Input-lardan ma'lumot olish
+    function getInputValue(e) {
+        setNewProduct({
+            ...newProduct,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    // Mahsulot qo'shish funksiyasi
+    function addFunction(e) {
+        e.preventDefault();
+        setProducts([...products, { ...newProduct, id: getUID() }]);
+        // navigate("product");
+    };
 
     return (
         <ContextData.Provider value={{
@@ -149,6 +179,11 @@ export function ContextFunction({ children }) {
             decrement,
             like,
             handleLike,
+            search,
+            setSearch,
+            newProduct,
+            getInputValue,
+            addFunction,
         }}>
             {children}
         </ContextData.Provider>

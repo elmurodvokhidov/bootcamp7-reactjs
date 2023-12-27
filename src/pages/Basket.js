@@ -37,7 +37,7 @@ function Basket() {
                                         <td><img style={{ width: "120px" }} src={item.img} alt={item.title} /></td>
                                         <td>{item.title}</td>
                                         <td>{item.description.length > 20 ? item.description.slice(0, 20) + "..." : item.description}</td>
-                                        <td>{calcDis(item.price, item.discount) * item.count}$</td>
+                                        <td>{Math.floor(calcDis(item.price, item.discount) * item.count)}$</td>
                                         <td>
                                             <div className="d-flex flex-row justify-content-center align-items-center gap-3">
                                                 <button onClick={() => decrement(item)} className="btn btn-secondary"><FaMinus /></button>
@@ -63,7 +63,7 @@ function Basket() {
                     <div className="d-flex flex-column gap-2">
                         <div className="item">
                             <h3>Jami:</h3>
-                            <h3>{basket.length > 0 ? basket.reduce((amount, item) => amount + (calcDis(item.price, item.discount) * item.count), 0) : "0"}$</h3>
+                            <h3>{basket.length > 0 ? Math.floor(basket.reduce((amount, item) => amount + (calcDis(item.price, item.discount) * item.count), 0)) : "0"}$</h3>
                         </div>
                         <div className="item">
                             <h5>Promocode:</h5>
