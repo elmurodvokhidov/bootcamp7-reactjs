@@ -61,6 +61,7 @@ input::-webkit-inner-spin-button {
 }
 
 .customCard img {
+    margin-top: 10px;
     transition: all .5s ease-in-out;
 }
 
@@ -70,7 +71,7 @@ input::-webkit-inner-spin-button {
 
 .cardModal {
     position: absolute;
-    top: 35px;
+    top: 30px;
     left: 15px;
     right: 15px;
     height: 250px;
