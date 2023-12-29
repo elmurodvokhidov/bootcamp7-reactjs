@@ -68,6 +68,20 @@ export function ContextFunction({ children }) {
     // Navigation hook
     const navigate = useNavigate();
 
+    function handleClear() {
+        setNewProduct({
+            id: "",
+            title: "",
+            img: "",
+            description: "",
+            price: "",
+            discount: "",
+            status: true,
+            count: 1,
+            createdAt: "",
+        });
+    };
+
     // Korzinkaga mahsulot qo'shish
     function addToCart(mahsulot) {
         if (mahsulot.status) {
@@ -165,12 +179,31 @@ export function ContextFunction({ children }) {
         });
     };
 
-    // Mahsulot qo'shish funksiyasi
+    // Mahsulot qo'shish va tahrirlash funksiyasi
     function addFunction(e) {
         e.preventDefault();
-        setProducts([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]);
+        if (newProduct.id === "") {
+            // Yangi mahsulot qo'shish
+            setProducts([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]);
+        }
+        else {
+            // Mahsulotni tahrirlash
+            setProducts(products.map(product => product.id === newProduct.id ? newProduct : product));
+        }
+        handleClear();
         navigate("product");
-        console.log(products);
+    };
+
+    // Tahrirlash funksiyasi
+    function handleEdit(product) {
+        setNewProduct(product);
+        navigate("profile");
+    };
+
+    // Mahsulot o'chirish funksiyasi
+    function handleDelete(id) {
+        setProducts(products.filter(product => product.id !== id));
+        navigate("product");
     };
 
     return (
@@ -189,6 +222,8 @@ export function ContextFunction({ children }) {
             newProduct,
             getInputValue,
             addFunction,
+            handleEdit,
+            handleDelete,
         }}>
             {children}
         </ContextData.Provider>
