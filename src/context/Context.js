@@ -17,13 +17,18 @@ export function ContextFunction({ children }) {
     // Korzinkadagi barcha mahsulotlar
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket")) || []);
 
-    // Korzinkadagi barcha mahsulotlar qayta olish funksiyasi
+    // Korzinkadagi barcha mahsulotlarni qayta olish funksiyasi
     function getBasketProducts() {
         setBasket(JSON.parse(localStorage.getItem("basket")) || []);
     };
 
-    // Like-dage barcha mahsulotlar
-    const [like, setLike] = useState([]);
+    // Like-dagi barcha mahsulotlar
+    const [like, setLike] = useState(JSON.parse(localStorage.getItem("likes")) || []);
+
+    // Like-dagi barcha mahsulotlarni qayta olish funksiyasi
+    function getLikeProducts() {
+        setLike(JSON.parse(localStorage.getItem("likes")) || [])
+    };
 
     // Search state
     const [search, setSearch] = useState("");
@@ -57,18 +62,18 @@ export function ContextFunction({ children }) {
             createdAt: "",
         });
     };
-    console.log(basket);
+
     // Korzinkaga mahsulot qo'shish
     function addToCart(mahsulot) {
         if (mahsulot.status) {
             if (basket.filter(element => element.id === mahsulot.id).length === 0) {
                 if (localStorage.getItem("basket")) {
                     // Agar localstorage-da mahsulot bo'lsa...
-                    setBasket(localStorage.setItem("basket", JSON.stringify([...basket, mahsulot])));
+                    localStorage.setItem("basket", JSON.stringify([...basket, mahsulot]));
                 }
                 else {
                     // Agar localstorage-da mahsulot bo'lmasa...
-                    setBasket(localStorage.setItem("basket", JSON.stringify([mahsulot])));
+                    localStorage.setItem("basket", JSON.stringify([mahsulot]));
                 }
                 getBasketProducts();
                 Swal.fire({
@@ -108,7 +113,8 @@ export function ContextFunction({ children }) {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                setBasket(basket.filter(item => item.id !== id));
+                localStorage.setItem("basket", JSON.stringify(basket.filter(item => item.id !== id)));
+                getBasketProducts();
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
@@ -134,7 +140,13 @@ export function ContextFunction({ children }) {
     // Like-ga mahsulot qo'shish
     function handleLike(item) {
         if (like.filter(element => element.id === item.id).length === 0) {
-            setLike([...like, item]);
+            if (localStorage.getItem("likes")) {
+                // Agar mahsulot bo'lsa...
+                localStorage.setItem("likes", JSON.stringify([...like, item]));
+            } else {
+                // Agar mahsulot bo'lmasa...
+                localStorage.setItem("likes", JSON.stringify([item]));
+            }
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -144,7 +156,7 @@ export function ContextFunction({ children }) {
             });
         }
         else {
-            setLike(like.filter(i => i.id !== item.id));
+            localStorage.setItem("likes", JSON.stringify(like.filter(i => i.id !== item.id)));
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -152,8 +164,9 @@ export function ContextFunction({ children }) {
                 showConfirmButton: false,
                 timer: 1500
             });
-        }
-    }
+        };
+        getLikeProducts();
+    };
 
     // Input-lardan ma'lumot olish
     function getInputValue(e) {
@@ -168,12 +181,19 @@ export function ContextFunction({ children }) {
         e.preventDefault();
         if (newProduct.id === "") {
             // Yangi mahsulot qo'shish
-            setProducts([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]);
+            if (localStorage.getItem("products")) {
+                // Agar mahsulot bo'lsa...
+                localStorage.setItem("products", JSON.stringify([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
+            } else {
+                // Agar mahsulot bo'lmasa...
+                localStorage.setItem("products", JSON.stringify([{ ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
+            }
         }
         else {
             // Mahsulotni tahrirlash
-            setProducts(products.map(product => product.id === newProduct.id ? newProduct : product));
+            localStorage.setItem("products", JSON.stringify(products.map(product => product.id === newProduct.id ? newProduct : product)));
         }
+        getProducts();
         handleClear();
         navigate("product");
     };
@@ -186,7 +206,8 @@ export function ContextFunction({ children }) {
 
     // Mahsulot o'chirish funksiyasi
     function handleDelete(id) {
-        setProducts(products.filter(product => product.id !== id));
+        localStorage.setItem("products", JSON.stringify(products.filter(product => product.id !== id)));
+        getProducts();
         navigate("product");
     };
 
