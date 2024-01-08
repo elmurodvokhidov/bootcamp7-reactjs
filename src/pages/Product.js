@@ -9,8 +9,16 @@ function Product() {
     const {
         products,
         search,
-        setSearch
+        setSearch,
+        customFilter
     } = useContext(ContextData);
+    console.log(customFilter);
+
+    const filteredProducts = products.filter(element =>
+        // element.title.toLowerCase().includes(search.toLowerCase()) ||
+        // element.price.includes(search) ||
+        element.category.includes(customFilter)
+    );
 
     return (
         <div className="product">
@@ -26,17 +34,13 @@ function Product() {
                 <Sidebar />
 
                 <div className="row row-cols-1 row-cols-md-4 gap-5 justify-content-left pb-4 pt-3" style={{ width: "fit-content" }}>
-                    {
-                        products
-                            .filter(element => {
-                                if (element.title.toLowerCase().includes(search.toLowerCase())) {
-                                    return element
-                                }
-                            })
-                            .map(item => (
-                                <CardComponent item={item} key={item.id} />
-                            ))
-                    }
+                    {filteredProducts.length > 0 ? (
+                        filteredProducts.map(item => (
+                            <CardComponent item={item} key={item.id} />
+                        ))
+                    ) : (
+                        <h1>Not found!</h1>
+                    )}
                 </div>
             </div>
         </div>

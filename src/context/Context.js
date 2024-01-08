@@ -33,6 +33,9 @@ export function ContextFunction({ children }) {
     // Search state
     const [search, setSearch] = useState("");
 
+    // Custom filter state
+    const [customFilter, setCustomFilter] = useState("");
+
     // Input-lardan olingan barcha ma'lumotlar
     const [newProduct, setNewProduct] = useState({
         id: "",
@@ -43,6 +46,7 @@ export function ContextFunction({ children }) {
         discount: "",
         status: true,
         count: 1,
+        category: "",
         createdAt: "",
     });
 
@@ -59,6 +63,7 @@ export function ContextFunction({ children }) {
             discount: "",
             status: true,
             count: 1,
+            category: "",
             createdAt: "",
         });
     };
@@ -181,13 +186,13 @@ export function ContextFunction({ children }) {
         e.preventDefault();
         if (newProduct.id === "") {
             // Yangi mahsulot qo'shish
-            if (localStorage.getItem("products")) {
-                // Agar mahsulot bo'lsa...
-                localStorage.setItem("products", JSON.stringify([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
-            } else {
-                // Agar mahsulot bo'lmasa...
-                localStorage.setItem("products", JSON.stringify([{ ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
-            }
+            // if (localStorage.getItem("products")) {
+            // Agar mahsulot bo'lsa...
+            localStorage.setItem("products", JSON.stringify([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
+            // } else {
+            // Agar mahsulot bo'lmasa...
+            // localStorage.setItem("products", JSON.stringify([{ ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
+            // }
         }
         else {
             // Mahsulotni tahrirlash
@@ -229,6 +234,8 @@ export function ContextFunction({ children }) {
             addFunction,
             handleEdit,
             handleDelete,
+            customFilter,
+            setCustomFilter,
         }}>
             {children}
         </ContextData.Provider>

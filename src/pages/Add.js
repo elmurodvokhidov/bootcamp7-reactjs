@@ -5,7 +5,7 @@ function Add() {
     const {
         newProduct,
         getInputValue,
-        addFunction
+        addFunction,
     } = useContext(ContextData);
 
     return (
@@ -28,6 +28,15 @@ function Add() {
                     <div className="form-floating">
                         <input value={newProduct.discount} onChange={(e) => getInputValue(e)} type="number" name="discount" className="form-control" id="floatingPassword" required placeholder="Password" />
                         <label htmlFor="floatingPassword">Discount</label>
+                    </div>
+                    <div className="form-floating">
+                        <select className="form-select" onChange={(e) => getInputValue(e)} name="category" required>
+                            <option value="">Category</option>
+                            <option value="iphone">Iphone</option>
+                            <option value="samsung">Samsung</option>
+                            <option value="shivaki">Shivaki</option>
+                            <option value="lg">Lg</option>
+                        </select>
                     </div>
                 </div>
                 <div className="form-floating">

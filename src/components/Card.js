@@ -33,7 +33,7 @@ function CardComponent({ item }) {
                     }
                 </Card.Text>
                 <div className="d-flex justify-content-between align-items-center">
-                    <Card.Title>{calcDis(item.price, item.discount)}$ <del>{item.price}$</del></Card.Title>
+                    <Card.Title>{Math.round(calcDis(item.price, item.discount))}$ <del>{Math.round(item.price)}$</del></Card.Title>
                     <Button onClick={() => addToCart(item)} className='mx-3' style={{ background: "#8112FA" }}><FaCartShopping /></Button>
                 </div>
             </Card.Body>
