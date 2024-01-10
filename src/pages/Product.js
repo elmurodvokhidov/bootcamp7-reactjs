@@ -12,7 +12,6 @@ function Product() {
         setSearch,
         customFilter
     } = useContext(ContextData);
-    console.log(customFilter);
 
     const filteredProducts = products.filter(element =>
         // element.title.toLowerCase().includes(search.toLowerCase()) ||

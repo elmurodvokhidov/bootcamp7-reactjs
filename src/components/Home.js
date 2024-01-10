@@ -15,7 +15,7 @@ function Home() {
             </div>
             <div className="row row-cols-1 row-cols-md-4 gap-5 justify-content-left pb-4 pt-3">
                 {
-                    products.map(item => (
+                    products?.map(item => (
                         <CardComponent item={item} key={item.id} />
                     ))
                 }

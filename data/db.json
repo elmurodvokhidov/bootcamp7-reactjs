@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": "NDI3Y0ttMzIwNg==427cKm3206",
+      "title": "Apple iPhone 15",
+      "img": "https://olcha.uz/image/700x700/products/Cjg3V5nm4mBivJC9davhVhYWJBhcreltBb7OOuLX8ol5KM5TsUNUUEA6j9sK.jpg",
+      "description": "Ushbu noutbukning zamonaviy dizayni unga yuqori darajadagi ko'rinish beradi. Yupqa tanasi esa sayohat uchun juda mos keladi. Ixtiyoriy 15,6 dyuymli displey yorqin ranglar va aniq tasvirlarni taqdim etadi, tor ramkalar esa ko‘rinishni yaxshilaydi. Noutbuk ekstremal sharoitlarda ishonchlilik va chidamlilik bo'yicha maxsus sinovlardan o'tdi: zarba qarshiligi, tebranishga chidamliligi, klaviatura ishlashi, ilgakning chidamliligi, panellarni tirnalishdan himoya qilish, haroratning haddan tashqari ta'siridan va yuqori bosimdan himoya qilish uchun sinovlar.",
+      "price": "1000",
+      "discount": "50",
+      "status": true,
+      "count": 1,
+      "category": "iphone",
+      "createdAt": 3
+    },
+    {
+      "id": "NTY4NUh4QTA4MTk=5685HxA0819",
+      "title": "Televizor SHIVAKI UR78009 65''",
+      "img": "https://olcha.uz/image/266x266/products/T7CMnM3ZGr5VSFVIZiW39G7Xseh4SOZEICrP9yd0VTg6B1jyzRCn8zSzIq7B.jpg",
+      "description": "Ushbu noutbukning zamonaviy dizayni unga yuqori darajadagi ko'rinish beradi. Yupqa tanasi esa sayohat uchun juda mos keladi. Ixtiyoriy 15,6 dyuymli displey yorqin ranglar va aniq tasvirlarni taqdim etadi, tor ramkalar esa ko‘rinishni yaxshilaydi. Noutbuk ekstremal sharoitlarda ishonchlilik va chidamlilik bo'yicha maxsus sinovlardan o'tdi: zarba qarshiligi, tebranishga chidamliligi, klaviatura ishlashi, ilgakning chidamliligi, panellarni tirnalishdan himoya qilish, haroratning haddan tashqari ta'siridan va yuqori bosimdan himoya qilish uchun sinovlar.",
+      "price": "800",
+      "discount": "80",
+      "status": true,
+      "count": 1,
+      "category": "shivaki",
+      "createdAt": 7
+    }
+  ]
+}

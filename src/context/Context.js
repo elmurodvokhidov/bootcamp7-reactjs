@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import getUID from "uid-generator-package";
@@ -7,7 +8,7 @@ export const ContextData = React.createContext();
 
 export function ContextFunction({ children }) {
     // Barcha mahsulotlar
-    const [products, setProducts] = useState(JSON.parse(localStorage.getItem("products")) || []);
+    const [products, setProducts] = useState([]);
 
     // Barcha mahsulotlarni qayta olish funksiyasi
     function getProducts() {
@@ -67,6 +68,17 @@ export function ContextFunction({ children }) {
             createdAt: "",
         });
     };
+
+    // API-dan ma'lumot olish funksiyasi
+    function getData() {
+        axios.get("http://localhost:5000/products")
+            .then(res => setProducts(res.data))
+            .catch(err => console.log(err.response.data))
+    }
+
+    useEffect(() => {
+        getData();
+    }, []);
 
     // Korzinkaga mahsulot qo'shish
     function addToCart(mahsulot) {
@@ -185,20 +197,13 @@ export function ContextFunction({ children }) {
     function addFunction(e) {
         e.preventDefault();
         if (newProduct.id === "") {
-            // Yangi mahsulot qo'shish
-            // if (localStorage.getItem("products")) {
-            // Agar mahsulot bo'lsa...
-            localStorage.setItem("products", JSON.stringify([...products, { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
-            // } else {
-            // Agar mahsulot bo'lmasa...
-            // localStorage.setItem("products", JSON.stringify([{ ...newProduct, id: getUID(), createdAt: new Date().getMinutes() }]));
-            // }
+            axios.post("http://localhost:5000/products", { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() });
         }
         else {
             // Mahsulotni tahrirlash
-            localStorage.setItem("products", JSON.stringify(products.map(product => product.id === newProduct.id ? newProduct : product)));
+            axios.put(`http://localhost:5000/products/${newProduct.id}`, newProduct);
         }
-        getProducts();
+        getData();
         handleClear();
         navigate("product");
     };
@@ -211,8 +216,8 @@ export function ContextFunction({ children }) {
 
     // Mahsulot o'chirish funksiyasi
     function handleDelete(id) {
-        localStorage.setItem("products", JSON.stringify(products.filter(product => product.id !== id)));
-        getProducts();
+        axios.delete(`http://localhost:5000/products/${id}`);
+        getData();
         navigate("product");
     };
 
