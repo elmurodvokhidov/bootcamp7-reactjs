@@ -34,8 +34,11 @@ function Add() {
                             <option value="">Category</option>
                             <option value="iphone">Iphone</option>
                             <option value="samsung">Samsung</option>
+                            <option value="xiaomi">Xiaomi</option>
                             <option value="shivaki">Shivaki</option>
                             <option value="lg">Lg</option>
+                            <option value="lenovo">Lenovo</option>
+                            <option value="hp">Hp</option>Xiaomi Redmi 13C 8/256 GB Clover Green
                         </select>
                     </div>
                 </div>

@@ -11,9 +11,9 @@ export function ContextFunction({ children }) {
     const [products, setProducts] = useState([]);
 
     // Barcha mahsulotlarni qayta olish funksiyasi
-    function getProducts() {
-        setProducts(JSON.parse(localStorage.getItem("products")) || []);
-    };
+    // function getProducts() {
+    //     setProducts(JSON.parse(localStorage.getItem("products")) || []);
+    // };
 
     // Korzinkadagi barcha mahsulotlar
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket")) || []);
@@ -36,6 +36,9 @@ export function ContextFunction({ children }) {
 
     // Custom filter state
     const [customFilter, setCustomFilter] = useState("");
+
+    // Slider state
+    const [value, setValue] = useState([0, 2000]);
 
     // Input-lardan olingan barcha ma'lumotlar
     const [newProduct, setNewProduct] = useState({
@@ -241,6 +244,8 @@ export function ContextFunction({ children }) {
             handleDelete,
             customFilter,
             setCustomFilter,
+            value,
+            setValue,
         }}>
             {children}
         </ContextData.Provider>
