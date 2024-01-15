@@ -4,19 +4,21 @@ import CardComponent from "../components/Card";
 import Sidebar from "../components/Sidebar";
 import { FiSearch } from "react-icons/fi";
 import Form from 'react-bootstrap/Form';
+import Pagination from "../components/Pagination";
 
 function Product() {
     const {
-        products,
+        // products,
         search,
         setSearch,
         customFilter,
         value,
+        pageProducts,
     } = useContext(ContextData);
 
     const [sortBy, setSortBy] = useState("default");
 
-    const filteredProducts = products.filter(element => {
+    const filteredProducts = pageProducts.filter(element => {
         const searchLowerCase = search.toLowerCase().trim();
 
         const titleMatch = element.title.toLowerCase().includes(searchLowerCase);
@@ -24,10 +26,9 @@ function Product() {
         const categoryMatch = element.category.includes(customFilter);
 
         return titleMatch && priceMatch && categoryMatch;
-
     });
 
-    // const filteredProducts = products.filter(item => {
+    // const filteredProducts = pageProducts.filter(item => {
     //     const searchLowerCase = search.toLowerCase();
 
     //     return (
@@ -90,14 +91,17 @@ function Product() {
             <div className="p-5 d-flex justify-content-between" style={{ gap: "150px" }}>
                 <Sidebar />
 
-                <div className="row row-cols-1 row-cols-md-4 justify-content-start w-100 gap-5 pb-4 pt-3">
-                    {sortedProducts.length > 0 ? (
-                        sortedProducts.map(item => (
-                            <CardComponent item={item} key={item.id} />
-                        ))
-                    ) : (
-                        <h1 className="w-100 text-center">Not found!</h1>
-                    )}
+                <div>
+                    <div className="row row-cols-1 row-cols-md-4 justify-content-start w-100 gap-5 pb-4 pt-3">
+                        {sortedProducts.length > 0 ? (
+                            sortedProducts.map(item => (
+                                <CardComponent item={item} key={item.id} />
+                            ))
+                        ) : (
+                            <h1 className="w-100 text-center">Not found!</h1>
+                        )}
+                    </div>
+                    <Pagination />
                 </div>
             </div>
         </div>

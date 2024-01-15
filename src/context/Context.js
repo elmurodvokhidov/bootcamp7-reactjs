@@ -10,6 +10,17 @@ export function ContextFunction({ children }) {
     // Barcha mahsulotlar
     const [products, setProducts] = useState([]);
 
+    // Hozirgi page raqami
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // Har bir page-da nechtadan mahsulot bo'lishi
+    const [perPage, setPerPage] = useState(6);
+
+    // Hozirgi mahsulotlarni ko'rsatish
+    const indexOfLastProduct = currentPage * perPage;
+    const indexOfFirstProduct = indexOfLastProduct - perPage;
+    const pageProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
     // Barcha mahsulotlarni qayta olish funksiyasi
     // function getProducts() {
     //     setProducts(JSON.parse(localStorage.getItem("products")) || []);
@@ -246,6 +257,11 @@ export function ContextFunction({ children }) {
             setCustomFilter,
             value,
             setValue,
+            currentPage,
+            setCurrentPage,
+            perPage,
+            setPerPage,
+            pageProducts,
         }}>
             {children}
         </ContextData.Provider>
