@@ -8,11 +8,17 @@ import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { ContextData } from '../context/Context';
+import { RxCross2 } from "react-icons/rx";
 
 function NavbarComponent() {
     const {
         basket,
-        like
+        like,
+        user,
+        loginModal,
+        handleLoginModal,
+        dropdown,
+        handleDropdown,
     } = useContext(ContextData);
 
     return (
@@ -28,7 +34,55 @@ function NavbarComponent() {
                         <NavLink to="product">Product <BsFillBoxFill /></NavLink>
                         <NavLink to="likes">Likes <FaHeart /><span className='showLength likeLength'>{like.length}</span></NavLink>
                         <NavLink to="basket">Basket <FaCartShopping /><span className='showLength'>{basket.length}</span></NavLink>
-                        <NavLink to="profile">Profile <FaUserAlt /></NavLink>
+                        {
+                            user ?
+                                <>
+                                    <Link onClick={handleDropdown}>Profile <FaUserAlt /></Link>
+                                    {
+                                        dropdown &&
+                                        <ul className='customDropdown' style={{ listStyle: "none" }}>
+                                            <li>Account</li>
+                                            <li>Orders</li>
+                                            <li>Logout</li>
+                                        </ul>
+                                    }
+                                </>
+                                :
+                                <>
+                                    <Link onClick={handleLoginModal}>Login <FaUserAlt /></Link>
+                                    {
+                                        loginModal &&
+                                        <div onClick={handleLoginModal} class="modal fade show loginModal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style={{ paddingRight: "17px", display: "block" }}>
+                                            <div onClick={(e) => e.stopPropagation()} class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Login to your account</h5>
+                                                        <button type="button" className='btn btn-light' onClick={handleLoginModal}>
+                                                            <span aria-hidden="true"><RxCross2 /></span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label for="recipient-username" class="col-form-label">Username</label>
+                                                                <input type="text" class="form-control" id="recipient-username" />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="recipient-password" class="col-form-label">Password</label>
+                                                                <input type="text" class="form-control" id="recipient-password" />
+                                                            </div>
+                                                        </form>
+                                                        {/* <p className='btn btn-link'>You don't have an account, create one!</p> */}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary">Login</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>

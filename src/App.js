@@ -8,10 +8,19 @@ import Basket from "./pages/Basket";
 import CardInfo from "./pages/CardInfo";
 import NavbarComponent from "./components/Navbar";
 import Footer from "./components/Footer";
+import { useContext } from "react";
+import { ContextData } from "./context/Context";
 
 function App() {
+  const { loginModal } = useContext(ContextData);
+
+  const style = {
+    height: "100vh",
+    overflow: "hidden",
+  };
+
   return (
-    <div className="App">
+    <div className="App" style={loginModal ? style : null}>
 
       <NavbarComponent />
 

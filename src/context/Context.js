@@ -7,6 +7,19 @@ import getUID from "uid-generator-package";
 export const ContextData = React.createContext();
 
 export function ContextFunction({ children }) {
+    const [user, setUser] = useState(null);
+
+    const [loginModal, setLoginModal] = useState(false);
+    const [dropdown, setDropdown] = useState(false);
+
+    function handleDropdown() {
+        setDropdown(!dropdown);
+    };
+
+    function handleLoginModal() {
+        setLoginModal(!loginModal);
+    };
+
     // Barcha mahsulotlar
     const [products, setProducts] = useState([]);
 
@@ -262,6 +275,11 @@ export function ContextFunction({ children }) {
             perPage,
             setPerPage,
             pageProducts,
+            user,
+            loginModal,
+            dropdown,
+            handleLoginModal,
+            handleDropdown,
         }}>
             {children}
         </ContextData.Provider>

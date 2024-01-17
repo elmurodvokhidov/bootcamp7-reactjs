@@ -209,3 +209,16 @@ thead {
     padding-bottom: 10px;
     border-bottom: 1px solid silver;
 }
+
+.loginModal {
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.685);
+}
+
+.loginModal form {
+    position: relative;
+    z-index: 1;
+}
