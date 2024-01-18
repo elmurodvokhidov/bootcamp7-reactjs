@@ -7,14 +7,13 @@ import getUID from "uid-generator-package";
 export const ContextData = React.createContext();
 
 export function ContextFunction({ children }) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
+
+    function getUser() {
+        setUser(JSON.parse(localStorage.getItem("user")) || null);
+    };
 
     const [loginModal, setLoginModal] = useState(false);
-    const [dropdown, setDropdown] = useState(false);
-
-    function handleDropdown() {
-        setDropdown(!dropdown);
-    };
 
     function handleLoginModal() {
         setLoginModal(!loginModal);
@@ -248,6 +247,26 @@ export function ContextFunction({ children }) {
         navigate("product");
     };
 
+    // Validate funksiyasi
+    function validate(element) {
+        let error = {};
+        if (!element.username) {
+            error = { ...error, username: "Username required!" }
+        }
+        else if(element.username.trim().length < 5) {
+          error = { ...error, username: "Username must not be less than 5 characters!" }
+        }
+      
+        if (!element.password) {
+          error = { ...error, password: "Password required!" }
+        }
+        else if (element.password.trim().length < 8) {
+          error = { ...error, password: "Username must not be less than 8 characters!" }
+        }
+      
+        return error;
+      }
+
     return (
         <ContextData.Provider value={{
             products,
@@ -277,9 +296,9 @@ export function ContextFunction({ children }) {
             pageProducts,
             user,
             loginModal,
-            dropdown,
             handleLoginModal,
-            handleDropdown,
+            getUser,
+            validate,
         }}>
             {children}
         </ContextData.Provider>

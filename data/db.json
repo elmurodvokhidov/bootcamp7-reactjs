@@ -239,6 +239,23 @@
       "count": 1,
       "category": "samsung",
       "createdAt": 41
+    },
+    {
+      "id": "Nzc3N09URTUwODAw7777OTE50800",
+      "title": "Samsung Galaxy A34 5G (Global) 8/128 GB Grafit",
+      "img": "https://olcha.uz/image/266x266/products/FhChmSbDRmtHc0Jq0vT5uyogCTHovCUmh4wxGugSPuwnlFxVgl3LznSMAdW1.jpg",
+      "description": "Hamma narsani va hatto ko'proq narsani ko'ring 6,7 dyuymli U-ekran bilan mavjud narsalar chegaralarini kengaytiring. FHD+ texnologiyasiga ega Galaxy A05s displeyi tiniq va tiniq tasvirlarni taqdim etadi, bu esa o‘zingizni sevimli kontentingizga yanada jozibaliroq qiladi.  Tasvirlar illyustrativ maqsadlarda simulyatsiya qilingan. 6,7 dyuymli ekran o'lchami ekran atrofidagi to'rtburchakning diagonaliga teng. Ekranning yumaloq burchaklarini hisobga olgan holda, bu o'lcham 6,6 dyuymni tashkil qiladi. Dumaloq burchaklar va kamera linzalari uchun teshik tufayli ekranning haqiqiy maydoni biroz kichikroq.  Vaqtsiz klassik Galaxy A05s o‘ylangan dizayn va ajoyib sirt tuzilishiga ega. Smartfon uchta rangda mavjud: qora, kumush va lavanta.  Siz baham ko'rmoqchi bo'lgan kadrlar Galaxy A05s kameralari har qanday sahnani suratga olish uchun mos keladi. 50 megapikselli keng burchakli kamera bilan landshaftlarni, 2 megapikselli chuqurlikdagi kamera bilan bokeh portretlarini va 13 megapikselli old kamera bilan sevimli selfilar",
+      "price": "400",
+      "discount": "12",
+      "status": true,
+      "count": 1,
+      "category": "samsung",
+      "createdAt": 18,
+      "author": {
+        "id": "NzMyMExSRzE3MTQ=7320LRG1714",
+        "username": "elmurod",
+        "password": "12121212"
+      }
     }
   ]
 }

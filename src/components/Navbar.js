@@ -6,9 +6,11 @@ import { BsFillBoxFill } from "react-icons/bs";
 import { FaHeart, FaCartShopping } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ContextData } from '../context/Context';
 import { RxCross2 } from "react-icons/rx";
+import getUID from 'uid-generator-package';
+import Swal from 'sweetalert2';
 
 function NavbarComponent() {
     const {
@@ -17,9 +19,48 @@ function NavbarComponent() {
         user,
         loginModal,
         handleLoginModal,
-        dropdown,
-        handleDropdown,
+        validate,
+        getUser,
     } = useContext(ContextData);
+
+    // Yangi foydalanuvchi
+    const [newUser, setNewUser] = useState({
+        id: "",
+        username: "",
+        password: ""
+    });
+
+    // Xatoliklarni ko'rsatuvchi state
+    // ...
+
+    // Input-dan olingan foydalanuvchi ma'lumotlari
+    function getInputValue(e) {
+        setNewUser({
+            ...newUser,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    // Clear funksiyasi - Savol! Clear funksiyasi nima uchun kerak?
+    function clear() {
+        setNewUser({
+            id: "",
+            username: "",
+            password: ""
+        });
+        // Xatoliklarni ko'rsatuvchi state-ni tozalash kerakmi?
+        // ...
+    };
+
+    // Login funksiyasi
+    function handleLogin() {
+        console.log("Loged in...");
+    };
+
+    // Register funksiyasi
+    function handleRegister() {
+        console.log("Registered...");
+    };
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary position-sticky top-0" style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,.2)", zIndex: "50" }}>
@@ -36,46 +77,39 @@ function NavbarComponent() {
                         <NavLink to="basket">Basket <FaCartShopping /><span className='showLength'>{basket.length}</span></NavLink>
                         {
                             user ?
-                                <>
-                                    <Link onClick={handleDropdown}>Profile <FaUserAlt /></Link>
-                                    {
-                                        dropdown &&
-                                        <ul className='customDropdown' style={{ listStyle: "none" }}>
-                                            <li>Account</li>
-                                            <li>Orders</li>
-                                            <li>Logout</li>
-                                        </ul>
-                                    }
-                                </>
+                                <NavLink to={'profile'}>Profile <FaUserAlt /></NavLink>
                                 :
                                 <>
                                     <Link onClick={handleLoginModal}>Login <FaUserAlt /></Link>
                                     {
                                         loginModal &&
-                                        <div onClick={handleLoginModal} class="modal fade show loginModal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style={{ paddingRight: "17px", display: "block" }}>
-                                            <div onClick={(e) => e.stopPropagation()} class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Login to your account</h5>
+                                        <div onClick={handleLoginModal} className="modal fade show loginModal" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" style={{ paddingRight: "17px", display: "block" }}>
+                                            <div onClick={(e) => e.stopPropagation()} className="modal-dialog" role="document">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h5 className="modal-title" id="exampleModalLabel">Login to your account</h5>
                                                         <button type="button" className='btn btn-light' onClick={handleLoginModal}>
                                                             <span aria-hidden="true"><RxCross2 /></span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div className="modal-body">
                                                         <form>
-                                                            <div class="form-group">
-                                                                <label for="recipient-username" class="col-form-label">Username</label>
-                                                                <input type="text" class="form-control" id="recipient-username" />
+                                                            <div className="form-group">
+                                                                <label htmlFor="recipient-username" className="col-form-label">Username</label>
+                                                                <input onInput={(e) => getInputValue(e)} type="text" name='username' className="form-control" id="recipient-username" />
+                                                                {/* Xatolikarni ko'rsatuvchi element */}
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="recipient-password" class="col-form-label">Password</label>
-                                                                <input type="text" class="form-control" id="recipient-password" />
+                                                            <div className="form-group">
+                                                                <label htmlFor="recipient-password" className="col-form-label">Password</label>
+                                                                <input onInput={(e) => getInputValue(e)} type="text" name='password' className="form-control" id="recipient-password" />
+                                                                {/* Xatolikarni ko'rsatuvchi element */}
                                                             </div>
                                                         </form>
                                                         {/* <p className='btn btn-link'>You don't have an account, create one!</p> */}
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary">Login</button>
+                                                    <div className="modal-footer">
+                                                        <button onClick={handleRegister} type="button" className="btn btn-success">Register</button>
+                                                        <button onClick={handleLogin} type="button" className="btn btn-primary">Login</button>
                                                     </div>
                                                 </div>
                                             </div>
