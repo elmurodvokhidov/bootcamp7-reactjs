@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import Add from "./pages/Add";
 import NotFound from "./pages/NotFound";
 import Product from "./pages/Product";
 import Likes from "./pages/Likes";
@@ -10,6 +9,7 @@ import NavbarComponent from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useContext } from "react";
 import { ContextData } from "./context/Context";
+import Profile from "./pages/Profile";
 
 function App() {
   const { loginModal } = useContext(ContextData);
@@ -29,7 +29,7 @@ function App() {
         <Route path="product" element={<Product />} />
         <Route path="likes" element={<Likes />} />
         <Route path="basket" element={<Basket />} />
-        <Route path="profile" element={<Add />} />
+        <Route path="profile" element={<Profile />} />
         <Route path=":id" element={<CardInfo />} />
         <Route path="likes/:id" element={<CardInfo />} />
         <Route path="product/:id" element={<CardInfo />} />

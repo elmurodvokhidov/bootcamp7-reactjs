@@ -7,19 +7,50 @@ import getUID from "uid-generator-package";
 export const ContextData = React.createContext();
 
 export function ContextFunction({ children }) {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
 
+    // Dasturdagi foydalanuvchilar ro'yxati
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || []);
+
+    // Ro'yxatdan o'tgan foydalanuvchi ma'lumoti
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser")) || {});
+
+    // Yangi foydalanuvchi
+    const [newUser, setNewUser] = useState({
+        id: "",
+        username: "",
+        password: ""
+    });
+
+    // Dasturdagi foydalanuvchilar ro'yxatini qayta olish funksiyasi
     function getUser() {
-        setUser(JSON.parse(localStorage.getItem("user")) || null);
+        setUser(JSON.parse(localStorage.getItem("user")) || []);
     };
 
+    // Ro'yxatdan o'tgan foydalanuvchi ma'lumotini qayta olish funksiyasi
+    function getCurrentUser() {
+        setCurrentUser(JSON.parse(localStorage.getItem("currentUser")) || {});
+    };
+
+    // login oynasini boshqaruchi state
     const [loginModal, setLoginModal] = useState(false);
 
+    // login oynasini ochuvchi/yopuvchi funksiya
     function handleLoginModal() {
         setLoginModal(!loginModal);
     };
 
-    // Barcha mahsulotlar
+    // Barcha mahsulotlar ro'yxati
     const [products, setProducts] = useState([]);
 
     // Hozirgi page raqami
@@ -33,12 +64,7 @@ export function ContextFunction({ children }) {
     const indexOfFirstProduct = indexOfLastProduct - perPage;
     const pageProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    // Barcha mahsulotlarni qayta olish funksiyasi
-    // function getProducts() {
-    //     setProducts(JSON.parse(localStorage.getItem("products")) || []);
-    // };
-
-    // Korzinkadagi barcha mahsulotlar
+    // Korzinkadagi barcha mahsulotlar ro'yxati
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket")) || []);
 
     // Korzinkadagi barcha mahsulotlarni qayta olish funksiyasi
@@ -119,12 +145,9 @@ export function ContextFunction({ children }) {
                     localStorage.setItem("basket", JSON.stringify([mahsulot]));
                 }
                 getBasketProducts();
-                Swal.fire({
-                    position: "top-end",
+                Toast.fire({
                     icon: "success",
-                    title: "Your work has been saved",
-                    showConfirmButton: false,
-                    timer: 1500
+                    title: "Successfully added to the cart"
                 });
             }
             else {
@@ -158,10 +181,9 @@ export function ContextFunction({ children }) {
             if (result.isConfirmed) {
                 localStorage.setItem("basket", JSON.stringify(basket.filter(item => item.id !== id)));
                 getBasketProducts();
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully deleted from cart"
                 });
             }
         });
@@ -190,22 +212,16 @@ export function ContextFunction({ children }) {
                 // Agar mahsulot bo'lmasa...
                 localStorage.setItem("likes", JSON.stringify([item]));
             }
-            Swal.fire({
-                position: "top-end",
+            Toast.fire({
                 icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
+                title: "Added successfully"
             });
         }
         else {
             localStorage.setItem("likes", JSON.stringify(like.filter(i => i.id !== item.id)));
-            Swal.fire({
-                position: "top-end",
+            Toast.fire({
                 icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
+                title: "Deleted successfully"
             });
         };
         getLikeProducts();
@@ -240,7 +256,7 @@ export function ContextFunction({ children }) {
         navigate("profile");
     };
 
-    // Mahsulot o'chirish funksiyasi
+    // Mahsulotni o'chirish funksiyasi
     function handleDelete(id) {
         axios.delete(`http://localhost:5000/products/${id}`);
         getData();
@@ -251,26 +267,65 @@ export function ContextFunction({ children }) {
     function validate(element) {
         let error = {};
         if (!element.username) {
-            error = { ...error, username: "Username required!" }
+            error = { ...error, username: "Username is required!" };
         }
-        else if(element.username.trim().length < 5) {
-          error = { ...error, username: "Username must not be less than 5 characters!" }
+        else if (element.username.length < 3) {
+            error = { ...error, username: "Username must not be less then 3 characters!" };
         }
-      
+
         if (!element.password) {
-          error = { ...error, password: "Password required!" }
+            error = { ...error, password: "Password is required!" };
         }
-        else if (element.password.trim().length < 8) {
-          error = { ...error, password: "Username must not be less than 8 characters!" }
+        else if (element.password.length < 8) {
+            error = { ...error, password: "Password must not be less then 8 characters!" };
         }
-      
-        return error;
-      }
+
+        return error
+    };
+
+    // Xatoliklarni ko'rsatuvchi state
+    const [errorState, setErrorState] = useState({});
+
+    // Input-dan olingan foydalanuvchi ma'lumotlari
+    function getUserValue(e) {
+        setNewUser({
+            ...newUser,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    // Clear funksiyasi
+    function clear() {
+        setNewUser({
+            id: "",
+            username: "",
+            password: ""
+        });
+        // Xatoliklarni ko'rsatuvchi state-ni tozalash kerakmi?
+        // ...
+    };
+
+    // Login funksiyasi
+    function handleLogin() {
+        const errorMessage = validate(newUser);
+        setErrorState(errorMessage);
+        if (Object.keys(errorMessage).length === 0) {
+            console.log("Successfully loged in!");
+        }
+    };
+
+    // Register funksiyasi
+    function handleRegister() {
+        const errorMessage = validate(newUser);
+        setErrorState(errorMessage);
+        if (Object.keys(errorMessage).length === 0) {
+            console.log("Successfully registered!");
+        };
+    };
 
     return (
         <ContextData.Provider value={{
             products,
-            setProducts,
             addToCart,
             basket,
             deleteProductFromCart,
@@ -298,7 +353,14 @@ export function ContextFunction({ children }) {
             loginModal,
             handleLoginModal,
             getUser,
-            validate,
+            navigate,
+            errorState,
+            getUserValue,
+            handleLogin,
+            handleRegister,
+            currentUser,
+            getCurrentUser,
+            Toast,
         }}>
             {children}
         </ContextData.Provider>

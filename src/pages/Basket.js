@@ -15,7 +15,7 @@ function Basket() {
 
     return (
         <div className="home container py-5 basket">
-            <div className="scrollBar">
+            <div className="scrollBar mb-5">
                 <Table striped className="text-center">
                     <thead>
                         <tr>
