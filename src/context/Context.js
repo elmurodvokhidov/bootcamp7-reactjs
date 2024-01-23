@@ -239,7 +239,7 @@ export function ContextFunction({ children }) {
     function addFunction(e) {
         e.preventDefault();
         if (newProduct.id === "") {
-            axios.post("http://localhost:5000/products", { ...newProduct, id: getUID(), createdAt: new Date().getMinutes() });
+            axios.post("http://localhost:5000/products", { ...newProduct, id: getUID(), author: currentUser, createdAt: new Date().getMinutes() });
         }
         else {
             // Mahsulotni tahrirlash
@@ -253,7 +253,7 @@ export function ContextFunction({ children }) {
     // Tahrirlash funksiyasi
     function handleEdit(product) {
         setNewProduct(product);
-        navigate("profile");
+        navigate("profile/add");
     };
 
     // Mahsulotni o'chirish funksiyasi
@@ -302,7 +302,7 @@ export function ContextFunction({ children }) {
             password: ""
         });
         // Xatoliklarni ko'rsatuvchi state-ni tozalash kerakmi?
-        // ...
+        setErrorState({});
     };
 
     // Login funksiyasi
@@ -310,7 +310,22 @@ export function ContextFunction({ children }) {
         const errorMessage = validate(newUser);
         setErrorState(errorMessage);
         if (Object.keys(errorMessage).length === 0) {
-            console.log("Successfully loged in!");
+            const foundUser = user.filter(element => element.username === newUser.username && element.password === newUser.password);
+            if (foundUser.length > 0) {
+                localStorage.setItem("currentUser", JSON.stringify(foundUser[0]));
+                getCurrentUser();
+                handleLoginModal();
+                Toast.fire({
+                    icon: "success",
+                    title: "Logged in successfully"
+                });
+            }
+            else {
+                Toast.fire({
+                    icon: "warning",
+                    title: "Username or Password incorrect"
+                });
+            }
         }
     };
 
@@ -319,7 +334,26 @@ export function ContextFunction({ children }) {
         const errorMessage = validate(newUser);
         setErrorState(errorMessage);
         if (Object.keys(errorMessage).length === 0) {
-            console.log("Successfully registered!");
+            const foundUser = user.filter(element => element.username === newUser.username && element.password === newUser.password);
+            if (foundUser.length === 0) {
+                const generalUser = { ...newUser, id: getUID() };
+                localStorage.setItem("currentUser", JSON.stringify(generalUser));
+                localStorage.setItem("user", JSON.stringify([...user, generalUser]));
+                getCurrentUser();
+                getUser();
+                clear();
+                handleLoginModal();
+                Toast.fire({
+                    icon: "success",
+                    title: "Registered successfully"
+                });
+            }
+            else {
+                Toast.fire({
+                    icon: "warning",
+                    title: "User has already been registered"
+                });
+            }
         };
     };
 
@@ -361,6 +395,7 @@ export function ContextFunction({ children }) {
             currentUser,
             getCurrentUser,
             Toast,
+            setProducts,
         }}>
             {children}
         </ContextData.Provider>

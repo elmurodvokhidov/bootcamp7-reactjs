@@ -239,6 +239,23 @@
       "count": 1,
       "category": "samsung",
       "createdAt": 41
+    },
+    {
+      "id": "NzU4MEVQazE5NTc07580EPk19574",
+      "title": "iphone 13 pro silver",
+      "img": "https://olcha.uz/image/266x266/products/FhChmSbDRmtHc0Jq0vT5uyogCTHovCUmh4wxGugSPuwnlFxVgl3LznSMAdW1.jpg",
+      "description": "Ushbu noutbukning zamonaviy dizayni unga yuqori darajadagi ko'rinish beradi. Yupqa tanasi esa sayohat uchun juda mos keladi. Ixtiyoriy 15,6 dyuymli displey yorqin ranglar va aniq tasvirlarni taqdim etadi, tor ramkalar esa ko‘rinishni yaxshilaydi. Noutbuk ekstremal sharoitlarda ishonchlilik va chidamlilik bo'yicha maxsus sinovlardan o'tdi: zarba qarshiligi, tebranishga chidamliligi, klaviatura ishlashi, ilgakning chidamliligi, panellarni tirnalishdan himoya qilish, haroratning haddan tashqari ta'siridan va yuqori bosimdan himoya qilish uchun sinovlar.",
+      "price": "400",
+      "discount": "10",
+      "status": true,
+      "count": 1,
+      "category": "iphone",
+      "createdAt": 34,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     }
   ]
 }

@@ -6,7 +6,7 @@ import { BsFillBoxFill } from "react-icons/bs";
 import { FaHeart, FaCartShopping } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { ContextData } from '../context/Context';
 import { RxCross2 } from "react-icons/rx";
 
@@ -39,7 +39,7 @@ function NavbarComponent() {
                         <NavLink to="basket">Cart <FaCartShopping /><span className='showLength'>{basket.length}</span></NavLink>
                         {
                             Object.keys(currentUser).length > 0 ?
-                                <NavLink to={'profile'}>Profile <FaUserAlt /></NavLink>
+                                <NavLink to={'profile/status'}>Profile <FaUserAlt /></NavLink>
                                 :
                                 <>
                                     <Link onClick={handleLoginModal}>Login <FaUserAlt /></Link>

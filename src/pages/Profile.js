@@ -1,24 +1,24 @@
 import { useContext, useEffect } from "react";
 import { ContextData } from "../context/Context";
-import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import ProfileSidebar from "../components/ProfileSidebar";
 
 function Profile() {
     const {
-        user,
+        currentUser,
         navigate,
     } = useContext(ContextData);
 
     useEffect(() => {
-        if (!user) navigate("/");
-    }, [user, navigate]);
+        if (!currentUser) navigate("/");
+    }, [currentUser, navigate]);
 
     return (
-        <div className="profile container pt-5 d-flex justify-content-between" style={{ gap: "150px" }}>
+        <div className="profile container py-5 d-flex justify-content-between" style={{ gap: "150px" }}>
             <ProfileSidebar />
 
-            <div>
-
+            <div className="w-75">
+                <Outlet />
             </div>
         </div>
     )

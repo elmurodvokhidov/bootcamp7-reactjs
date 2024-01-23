@@ -9,7 +9,8 @@
     opacity: 0;
 }
 
-.navbar a {
+.navbar a,
+.profileSidebar a {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -221,4 +222,9 @@ thead {
 .loginModal form {
     position: relative;
     z-index: 1;
+}
+
+.profile .likes {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }

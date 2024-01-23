@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 import { useContext } from "react";
 import { ContextData } from "./context/Context";
 import Profile from "./pages/Profile";
+import ProfileStatus from "./pages/ProfileStatus";
+import Add from "./pages/Add";
 
 function App() {
   const { loginModal } = useContext(ContextData);
@@ -29,7 +31,11 @@ function App() {
         <Route path="product" element={<Product />} />
         <Route path="likes" element={<Likes />} />
         <Route path="basket" element={<Basket />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile" element={<Profile />}>
+          <Route path="status" element={<ProfileStatus />} />
+          <Route path="add" element={<Add />} />
+          <Route path="likes" element={<Likes />} />
+        </Route>
         <Route path=":id" element={<CardInfo />} />
         <Route path="likes/:id" element={<CardInfo />} />
         <Route path="product/:id" element={<CardInfo />} />

@@ -9,7 +9,7 @@ function Add() {
     } = useContext(ContextData);
 
     return (
-        <main className="m-auto vh-100 d-flex align-items-center justify-content-center">
+        <main className="mb-5 d-flex justify-content-center">
             <form onSubmit={(e) => addFunction(e)} className="text-center d-flex flex-column gap-3">
                 <h1 className="h3 mb-5 fw-normal">Add a new product</h1>
                 <div className="form-floating">

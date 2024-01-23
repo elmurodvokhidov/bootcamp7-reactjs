@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { NavLink } from "react-bootstrap";
 import { FaUserAlt } from "react-icons/fa";
 import { FaCirclePlus, FaHeart } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 import { ContextData } from "../context/Context";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 function ProfileSidebar() {
     const {
@@ -43,18 +43,18 @@ function ProfileSidebar() {
     };
 
     return (
-        <ul className="d-flex flex-column gap-3 fs-5" style={styles}>
+        <ul className="profileSidebar w-25 d-flex flex-column gap-3 fs-5" style={styles}>
             <li>
-                <NavLink><FaUserAlt /> Profile State</NavLink>
+                <Link to={"status"}><FaUserAlt />Profile Status</Link>
             </li>
             <li>
-                <NavLink><FaCirclePlus /> Add new Product</NavLink>
+                <Link to={"add"}><FaCirclePlus />Add new Product</Link>
             </li>
             <li>
-                <NavLink><FaHeart /> Favorites</NavLink>
+                <Link to={"likes"}><FaHeart />Favorites</Link>
             </li>
             <li>
-                <button onClick={logout} className="d-flex align-items-center justify-content-center gap-2 fs-5 btn btn-outline-danger mt-4"><IoLogOut /> Logout</button>
+                <button onClick={logout} className="d-flex align-items-center justify-content-center gap-2 fs-5 btn btn-outline-danger mt-4"><IoLogOut />Logout</button>
             </li>
         </ul>
     )
