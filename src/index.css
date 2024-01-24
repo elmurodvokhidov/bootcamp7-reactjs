@@ -10,7 +10,8 @@
 }
 
 .navbar a,
-.profileSidebar a {
+.profileSidebar a,
+.crumb a {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -227,4 +228,27 @@ thead {
 .profile .likes {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+}
+
+.breadCrumb {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+    /* background: #000; */
+}
+
+.crumb {
+    display: flex;
+    align-items: center;
+}
+
+.crumb::after {
+    content: ">";
+    margin-left: 20px;
+    display: block;
+    color: #8112FA;
+}
+
+.crumb a {
+    font-size: 24px;
 }

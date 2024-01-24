@@ -12,6 +12,7 @@ import { ContextData } from "./context/Context";
 import Profile from "./pages/Profile";
 import ProfileStatus from "./pages/ProfileStatus";
 import Add from "./pages/Add";
+import BreadCrumb from "./components/BreadCrumb";
 
 function App() {
   const { loginModal } = useContext(ContextData);
@@ -25,6 +26,8 @@ function App() {
     <div className="App" style={loginModal ? style : null}>
 
       <NavbarComponent />
+
+      <BreadCrumb />
 
       <Routes>
         <Route index element={<Home />} />

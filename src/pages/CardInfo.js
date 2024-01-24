@@ -28,8 +28,8 @@ function CardInfo() {
                 <footer className="d-flex align-items-center justify-content-between">
                     <p className="card-text fs-5"><small className="text-body-secondary">Create at {new Date().getMinutes() - targetCard.createdAt} mins ago</small></p>
                     {
-                        targetCard.author?.id === currentUser.id ?
-                            <div className="btn-group">
+                        targetCard.author?.id === currentUser?.id ?
+                            <div className="btn-gruop">
                                 <button className="btn btn-success" onClick={() => handleEdit(targetCard)}>Edit</button>
                                 <button className="btn btn-danger" onClick={() => handleDelete(id)}>Delete</button>
                             </div>

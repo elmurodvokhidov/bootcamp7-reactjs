@@ -10,7 +10,12 @@
       "status": true,
       "count": 1,
       "category": "iphone",
-      "createdAt": 3
+      "createdAt": 3,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NTY4NUh4QTA4MTk=5685HxA0819",
@@ -22,19 +27,12 @@
       "status": true,
       "count": 1,
       "category": "shivaki",
-      "createdAt": 7
-    },
-    {
-      "id": "Nzk2MWh5TzU2OTc=7961hyO5697",
-      "title": "Noutbuk Lenovo Ideapad 1 15IGL7 N4020 4/256 GB SSD",
-      "img": "https://olcha.uz/image/266x266/products/6GtZzW3iDF0I7lEdDf2dJgNVx0zOIfKubT55EVDvJ0vIsRpF80nGyM37Pxqq.jpg",
-      "description": "Lenovo Ideapad 1 15IGL7 N4020 4/256 GB SSD 15,6\" HD - Intel Celeron N4020 protsessorli, 8 GB operativ xotira va 256 GB SSD xotiraga ega Lenovo noutbuki. Ekran o'lchami 15,6 dyuym va HD piksellar soniga ega. Ushbu noutbuk Lenovo Ideapad 1 15IGL7 N4020 Notebook 8/256 GB SSD 15,6\" HD ixcham va yengil bo'lib, uni olib yurishni osonlashtiradi.",
-      "price": "700",
-      "discount": "10",
-      "status": true,
-      "count": 1,
-      "category": "lenovo",
-      "createdAt": 1
+      "createdAt": 7,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NzAzMGhMQTUxMjQw7030hLA51240",
@@ -46,7 +44,12 @@
       "status": true,
       "count": 1,
       "category": "lenovo",
-      "createdAt": 1
+      "createdAt": 1,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NjE4OXN6RjE4OTk26189szF18996",
@@ -58,7 +61,12 @@
       "status": true,
       "count": 1,
       "category": "samsung",
-      "createdAt": 23
+      "createdAt": 23,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "ODA0MGxpRzUwMzAx8040liG50301",
@@ -70,7 +78,12 @@
       "status": true,
       "count": 1,
       "category": "xiaomi",
-      "createdAt": 24
+      "createdAt": 24,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NDI4dHloMzYz428tyh363",
@@ -82,7 +95,12 @@
       "status": true,
       "count": 1,
       "category": "samsung",
-      "createdAt": 27
+      "createdAt": 27,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "MTAwMW5KYjUyNTAy1001nJb52502",
@@ -94,7 +112,12 @@
       "status": true,
       "count": 1,
       "category": "xiaomi",
-      "createdAt": 28
+      "createdAt": 28,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "OTg4MFVUYjQ1ODg=9880UTb4588",
@@ -106,7 +129,12 @@
       "status": true,
       "count": 1,
       "category": "hp",
-      "createdAt": 30
+      "createdAt": 30,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NDgyNmpEVzQ3ODcz4826jDW47873",
@@ -118,7 +146,12 @@
       "status": true,
       "count": 1,
       "category": "lenovo",
-      "createdAt": 30
+      "createdAt": 30,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "OTUyN0lEeTM0NDY09527IDy34464",
@@ -130,7 +163,12 @@
       "status": true,
       "count": 1,
       "category": "lenovo",
-      "createdAt": 31
+      "createdAt": 31,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NjI0NFBOaDM3NDE46244PNh37418",
@@ -142,7 +180,12 @@
       "status": true,
       "count": 1,
       "category": "lenovo",
-      "createdAt": 32
+      "createdAt": 32,
+      "author": {
+        "id": "OTUxMmdtWDM0MzY49512gmX34368",
+        "username": "michael",
+        "password": "12121213"
+      }
     },
     {
       "id": "NzgyMkxVZTI5MzAw7822LUe29300",
@@ -154,7 +197,12 @@
       "status": true,
       "count": 1,
       "category": "hp",
-      "createdAt": 33
+      "createdAt": 33,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "NjA4NHlaZzMyMjM=6084yZg3223",
@@ -166,7 +214,12 @@
       "status": true,
       "count": 1,
       "category": "shivaki",
-      "createdAt": 35
+      "createdAt": 35,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "MjQwOG9KZTQwNzQy2408oJe40742",
@@ -178,7 +231,12 @@
       "status": true,
       "count": 1,
       "category": "shivaki",
-      "createdAt": 35
+      "createdAt": 35,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "OTg1MGFZTzU1NTMx9850aYO55531",
@@ -190,7 +248,12 @@
       "status": true,
       "count": 1,
       "category": "lg",
-      "createdAt": 36
+      "createdAt": 36,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "MzE1NnVXWDQwNDc=3156uWX4047",
@@ -202,7 +265,12 @@
       "status": true,
       "count": 1,
       "category": "lg",
-      "createdAt": 37
+      "createdAt": 37,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "NDMwM3NYVTM4ODA34303sXU38807",
@@ -214,7 +282,12 @@
       "status": true,
       "count": 1,
       "category": "iphone",
-      "createdAt": 38
+      "createdAt": 38,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "ODg3OVd2ZzQ4NjQ08879Wvg48644",
@@ -226,7 +299,12 @@
       "status": true,
       "count": 1,
       "category": "iphone",
-      "createdAt": 39
+      "createdAt": 39,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "NzI2OGFZQTE3MTQx7268aYA17141",
@@ -238,7 +316,12 @@
       "status": true,
       "count": 1,
       "category": "samsung",
-      "createdAt": 41
+      "createdAt": 41,
+      "author": {
+        "id": "OTU1M0ppZTQyNTA19553Jie42505",
+        "username": "asilbek",
+        "password": "12345678"
+      }
     },
     {
       "id": "NzU4MEVQazE5NTc07580EPk19574",
