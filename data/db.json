@@ -339,6 +339,58 @@
         "username": "michael",
         "password": "12121213"
       }
+    },
+    {
+      "id": "NjAyMmdqSDQ2ODcz6022gjH46873",
+      "title": "iphone 13 pro",
+      "img": "https://olcha.uz/image/266x266/products/FhChmSbDRmtHc0Jq0vT5uyogCTHovCUmh4wxGugSPuwnlFxVgl3LznSMAdW1.jpg",
+      "description": "Ushbu noutbukning zamonaviy dizayni unga yuqori darajadagi ko'rinish beradi. Yupqa tanasi esa sayohat uchun juda mos keladi. Ixtiyoriy 15,6 dyuymli displey yorqin ranglar va aniq tasvirlarni taqdim etadi, tor ramkalar esa ko‘rinishni yaxshilaydi. Noutbuk ekstremal sharoitlarda ishonchlilik va chidamlilik bo'yicha maxsus sinovlardan o'tdi: zarba qarshiligi, tebranishga chidamliligi, klaviatura ishlashi, ilgakning chidamliligi, panellarni tirnalishdan himoya qilish, haroratning haddan tashqari ta'siridan va yuqori bosimdan himoya qilish uchun sinovlar.",
+      "price": "100",
+      "discount": "0",
+      "status": true,
+      "count": 1,
+      "category": "iphone",
+      "createdAt": 15,
+      "author": {
+        "id": "OTM2NkdyYzg5MTA=9366Grc8910",
+        "username": "feruzbek",
+        "password": "12345678"
+      }
+    },
+    {
+      "id": "NzA3QWh0NTE0MjI=707Aht51422",
+      "title": "samsung",
+      "img": "https://olcha.uz/image/220x220/products/2022-02-24/televizor-shivaki-us32h4103-38353-0.jpeg",
+      "description": "Hamma narsani va hatto ko'proq narsani ko'ring 6,7 dyuymli U-ekran bilan mavjud narsalar chegaralarini kengaytiring. FHD+ texnologiyasiga ega Galaxy A05s displeyi tiniq va tiniq tasvirlarni taqdim etadi, bu esa o‘zingizni sevimli kontentingizga yanada jozibaliroq qiladi.  Tasvirlar illyustrativ maqsadlarda simulyatsiya qilingan. 6,7 dyuymli ekran o'lchami ekran atrofidagi to'rtburchakning diagonaliga teng. Ekranning yumaloq burchaklarini hisobga olgan holda, bu o'lcham 6,6 dyuymni tashkil qiladi. Dumaloq burchaklar va kamera linzalari uchun teshik tufayli ekranning haqiqiy maydoni biroz kichikroq.  Vaqtsiz klassik Galaxy A05s o‘ylangan dizayn va ajoyib sirt tuzilishiga ega. Smartfon uchta rangda mavjud: qora, kumush va lavanta.  Siz baham ko'rmoqchi bo'lgan kadrlar Galaxy A05s kameralari har qanday sahnani suratga olish uchun mos keladi. 50 megapikselli keng burchakli kamera bilan landshaftlarni, 2 megapikselli chuqurlikdagi kamera bilan bokeh portretlarini va 13 megapikselli old kamera bilan sevimli selfilar",
+      "price": "300",
+      "discount": "0",
+      "status": true,
+      "count": 1,
+      "category": "samsung",
+      "createdAt": 16,
+      "author": {
+        "id": "OTM2NkdyYzg5MTA=9366Grc8910",
+        "username": "feruzbek",
+        "password": "12345678"
+      }
+    },
+    {
+      "id": "Njg0NUtvejIyOTk=6845Koz2299",
+      "title": "redmi 11 pro max",
+      "img": "https://olcha.uz/image/700x700/products/Cjg3V5nm4mBivJC9davhVhYWJBhcreltBb7OOuLX8ol5KM5TsUNUUEA6j9sK.jpg",
+      "description": "Hamma narsani va hatto ko'proq narsani ko'ring 6,7 dyuymli U-ekran bilan mavjud narsalar chegaralarini kengaytiring. FHD+ texnologiyasiga ega Galaxy A05s displeyi tiniq va tiniq tasvirlarni taqdim etadi, bu esa o‘zingizni sevimli kontentingizga yanada jozibaliroq qiladi.  Tasvirlar illyustrativ maqsadlarda simulyatsiya qilingan. 6,7 dyuymli ekran o'lchami ekran atrofidagi to'rtburchakning diagonaliga teng. Ekranning yumaloq burchaklarini hisobga olgan holda, bu o'lcham 6,6 dyuymni tashkil qiladi. Dumaloq burchaklar va kamera linzalari uchun teshik tufayli ekranning haqiqiy maydoni biroz kichikroq.  Vaqtsiz klassik Galaxy A05s o‘ylangan dizayn va ajoyib sirt tuzilishiga ega. Smartfon uchta rangda mavjud: qora, kumush va lavanta.  Siz baham ko'rmoqchi bo'lgan kadrlar Galaxy A05s kameralari har qanday sahnani suratga olish uchun mos keladi. 50 megapikselli keng burchakli kamera bilan landshaftlarni, 2 megapikselli chuqurlikdagi kamera bilan bokeh portretlarini va 13 megapikselli old kamera bilan sevimli selfilar",
+      "price": "100",
+      "discount": "0",
+      "status": true,
+      "count": 1,
+      "category": "xiaomi",
+      "createdAt": "2024-01-26T11:20:02.299Z",
+      "author": {
+        "id": "OTM2NkdyYzg5MTA=9366Grc8910",
+        "username": "feruzbek",
+        "password": "12345678"
+      },
+      "updatedAt": "2024-01-26T11:27:14.624Z"
     }
   ]
 }

@@ -6,6 +6,7 @@ import { ContextData } from "../context/Context"
 function Home() {
     const {
         products,
+        loading,
     } = useContext(ContextData);
 
     return (
@@ -15,9 +16,10 @@ function Home() {
             </div>
             <div className="row row-cols-1 row-cols-md-4 gap-5 justify-content-left pb-4 pt-3">
                 {
-                    products?.map(item => (
-                        <CardComponent item={item} key={item.id} />
-                    ))
+                    loading ? <h1>Loading...</h1> :
+                        products?.map(item => (
+                            <CardComponent item={item} key={item.id} />
+                        ))
                 }
             </div>
         </div>

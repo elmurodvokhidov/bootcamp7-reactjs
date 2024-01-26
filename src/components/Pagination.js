@@ -12,7 +12,7 @@ function Pagination() {
 
     const pageNumbers = [];
 
-    for (let i = 1; i < Math.ceil(products.length / perPage); i++) {
+    for (let i = 1; i <= Math.ceil(products.length / perPage); i++) {
         pageNumbers.push(i);
     };
 
@@ -21,7 +21,7 @@ function Pagination() {
         if (functionType === "prev" && currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
-        else if (functionType === "next" && currentPage <= pageNumbers.length) {
+        else if (functionType === "next" && currentPage < pageNumbers.length) {
             setCurrentPage(currentPage + 1);
         }
     };

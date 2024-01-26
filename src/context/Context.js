@@ -19,6 +19,14 @@ export function ContextFunction({ children }) {
         }
     });
 
+    const [loading, setLoading] = useState(true);
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //     }, 3000);
+    // }, []);
+
     // Dasturdagi foydalanuvchilar ro'yxati
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
@@ -124,9 +132,14 @@ export function ContextFunction({ children }) {
     // API-dan ma'lumot olish funksiyasi
     function getData() {
         axios.get("http://localhost:5000/products")
-            .then(res => setProducts(res.data))
+            .then(res => {
+                setProducts(res.data);
+                setLoading(false);
+            })
             .catch(err => console.log(err.response.data))
     }
+
+    console.log(loading);
 
     useEffect(() => {
         getData();
@@ -239,13 +252,20 @@ export function ContextFunction({ children }) {
     function addFunction(e) {
         e.preventDefault();
         if (newProduct.id === "") {
-            axios.post("http://localhost:5000/products", { ...newProduct, id: getUID(), author: currentUser, createdAt: new Date().getMinutes() });
+            axios.post("http://localhost:5000/products", { ...newProduct, id: getUID(), author: currentUser, createdAt: new Date() })
+                .then(() => {
+                    getData();
+                })
+                .catch(error => console.log(error))
         }
         else {
             // Mahsulotni tahrirlash
-            axios.put(`http://localhost:5000/products/${newProduct.id}`, newProduct);
+            axios.put(`http://localhost:5000/products/${newProduct.id}`, { ...newProduct, updatedAt: new Date() })
+                .then(() => {
+                    getData();
+                })
+                .catch(error => console.log(error))
         }
-        getData();
         handleClear();
         navigate("product");
     };
@@ -258,9 +278,11 @@ export function ContextFunction({ children }) {
 
     // Mahsulotni o'chirish funksiyasi
     function handleDelete(id) {
-        axios.delete(`http://localhost:5000/products/${id}`);
-        getData();
-        navigate("product");
+        axios.delete(`http://localhost:5000/products/${id}`)
+            .then(() => {
+                getData();
+                navigate("product");
+            })
     };
 
     // Validate funksiyasi
@@ -396,6 +418,7 @@ export function ContextFunction({ children }) {
             getCurrentUser,
             Toast,
             setProducts,
+            loading,
         }}>
             {children}
         </ContextData.Provider>
