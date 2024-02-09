@@ -28,6 +28,7 @@ function App() {
   function reducer(state, action) {
     switch (action.type) {
       case "CREATE": return state = [...state, action.payload]
+      case "DELETE": return state = state.filter(item => item.ism !== action.payload)
       default: return state
     };
   };
@@ -38,7 +39,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home foydalanuvchilar={foydalanuvchilar} />} />
+        <Route path="/" element={<Home foydalanuvchilar={foydalanuvchilar} dispatch={dispatch} />} />
         <Route path="create-new" element={<Form dispatch={dispatch} />} />
       </Routes>
     </div>
