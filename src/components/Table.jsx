@@ -1,5 +1,6 @@
 import { ImBin } from "react-icons/im";
 import { FaPenToSquare } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 export function Table({ foydalanuvchilar, dispatch }) {
 
@@ -27,8 +28,8 @@ export function Table({ foydalanuvchilar, dispatch }) {
                             <td>{foydalanuvchi?.familya}</td>
                             <td>
                                 <div className="flex gap-14">
-                                    <button className="text-green-600 border-2 bg-slate-300 rounded px-2"><FaPenToSquare /></button>
-                                    <button onClick={() => deleteFunction(foydalanuvchi?.ism)} className="text-red-600 border-2 bg-slate-300 rounded px-2"><ImBin /></button>
+                                    <NavLink to={`edit/${foydalanuvchi.id}`} className="text-green-600 border-2 bg-slate-300 rounded px-2"><FaPenToSquare /></NavLink>
+                                    <button onClick={() => deleteFunction(foydalanuvchi?.id)} className="text-red-600 border-2 bg-slate-300 rounded px-2"><ImBin /></button>
                                 </div>
                             </td>
                         </tr>))
