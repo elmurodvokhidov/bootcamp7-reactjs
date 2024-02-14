@@ -1,1 +1,1 @@
-# lesson9 - useReducer() kirish, counter app
+# lesson11 - redux, react-redux, redux-toolkit kirish, counter app
