@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom"
 import {
@@ -7,10 +7,10 @@ import {
     authSuccess
 } from "../redux/slice/authSlice";
 import AuthServise from "../redux/api/auth";
-import { Toast } from "../components/SweetAlert";
+import { Toast } from "../utils/SweetAlert";
 
 function Login() {
-    const { isLoading } = useSelector(state => state.auth);
+    const { isLoading, isLoggedIn } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [auth, setAuth] = useState({
@@ -53,6 +53,12 @@ function Login() {
             });
         }
     };
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/admin-panel/dashboard");
+        };
+    }, [isLoggedIn]);
 
     return (
         <div className="w-full h-screen fixed top-0 bg-white">

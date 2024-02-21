@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom";
 import { authStart } from "../redux/slice/authSlice";
 import AuthServise from "../redux/api/auth";
-import { Toast } from "../components/SweetAlert";
+import { Toast } from "../utils/SweetAlert";
 
 function Register() {
     const { isLoading } = useSelector(state => state.auth);
