@@ -22,6 +22,11 @@ const AuthSlice = createSlice({
             saveToLocalStorage("x-token", action.payload.token);
             saveToLocalStorage("x-id", action.payload.data._id);
         },
+        authLogout: state => {
+            state.isLoggedIn = false;
+            state.auth = null;
+            localStorage.clear();
+        },
         authFailure: (state, action) => {
             state.isLoading = false;
             state.isError = action.payload;
@@ -32,6 +37,7 @@ const AuthSlice = createSlice({
 export const {
     authStart,
     authSuccess,
+    authLogout,
     authFailure
 } = AuthSlice.actions;
 export default AuthSlice.reducer;

@@ -5,6 +5,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Profile from './pages/Profile.jsx'
+import AdminProfile from './admin/AdminProfile.jsx'
 import ProfileStatus from './pages/ProfileStatus.jsx'
 import Login from './admin/Login.jsx'
 import Register from './admin/Register.jsx'
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "admin-panel/dashboard",
         element: <Dashboard />
+      },
+      {
+        path: "admin-panel/profile",
+        element: <AdminProfile />
       },
       {
         path: "profile",

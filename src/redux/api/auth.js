@@ -1,5 +1,13 @@
 import { api } from "./api";
 
+api.interceptors.request.use((req) => {
+    if (localStorage.getItem("x-token")) {
+        req.headers.Authorization = localStorage.getItem("x-token");
+    };
+
+    return req;
+});
+
 const AuthServise = {
     async register(auth) {
         const res = api.post("/api/user/register", auth);
