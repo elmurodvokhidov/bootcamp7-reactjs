@@ -46,10 +46,10 @@ function Login() {
                 title: data.message
             });
         } catch (error) {
-            dispatch(authFailure(error.response.data.message));
+            dispatch(authFailure(error.response?.data.message));
             await Toast.fire({
                 icon: "error",
-                title: error.response.data.message || error.message
+                title: error.response?.data.message || error.message
             });
         }
     };

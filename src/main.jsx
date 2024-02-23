@@ -9,6 +9,8 @@ import ProfileStatus from './pages/ProfileStatus.jsx'
 import Login from './admin/Login.jsx'
 import Register from './admin/Register.jsx'
 import Dashboard from './admin/Dashboard.jsx'
+import { Provider } from 'react-redux'
+import { store } from './redux/store/index.js'
 
 const router = createBrowserRouter([
   {
@@ -46,5 +48,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 )
