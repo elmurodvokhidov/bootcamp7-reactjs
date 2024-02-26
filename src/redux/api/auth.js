@@ -9,6 +9,7 @@ api.interceptors.request.use((req) => {
 });
 
 const AuthServise = {
+    // auth
     async register(auth) {
         const res = api.post("/api/user/register", auth);
         return res;
@@ -19,6 +20,17 @@ const AuthServise = {
     },
     async getAuth(id) {
         const res = api.get(`/api/user/${id}`);
+        return res;
+    },
+
+
+    // product
+    async createNewProduct(product) {
+        const res = api.post("/api/product/create", product);
+        return res;
+    },
+    async getAllProducts() {
+        const res = api.get("/api/product");
         return res;
     },
 };
