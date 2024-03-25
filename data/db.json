@@ -1,0 +1,39 @@
+{
+    "products": [
+        {
+            "id": "122181928912",
+            "name": "Samsung 13 Pro Siera Blue 128GB",
+            "price": 700
+        },
+        {
+            "id": "12218192823",
+            "name": "Samsung 12 Pro Siera Blue 128GB",
+            "price": 34
+        },
+        {
+            "id": "12218192823",
+            "name": "Samsung 22 Pro Siera Blue 128GB",
+            "price": 222
+        },
+        {
+            "id": "122181922323",
+            "name": "iPhone 18 Pro Siera Blue 128GB",
+            "price": 113
+        },
+        {
+            "id": "1221819289212",
+            "name": "iPhone 11 Pro Siera Blue 128GB",
+            "price": 565
+        },
+        {
+            "id": "1221181928912",
+            "name": "iPhone 10 Pro Siera Blue 128GB",
+            "price": 890
+        },
+        {
+            "id": "122551928912",
+            "name": "iPhone 15 Pro Siera Blue 128GB",
+            "price": 1000
+        }
+    ]
+}
